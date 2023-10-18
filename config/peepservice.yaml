@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: peepservice
+spec:
+  containers:
+     - name: peepservice
+       image: 1a1a/peepservice:0.0.1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: peepservice-clusterip
+spec:
+  selector:
+    app: peepservice
+  ports:
+    - name: peepservice
+      protocol: TCP
+      port: 5100
+      targetPort: 5100
+
